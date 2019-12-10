@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grpcclient
+  namespace: istio-grpc-test
+  labels:
+    app: grpcclient
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: grpcclient

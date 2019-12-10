@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grpcserver-v1
+  namespace: istio-grpc-test
+  labels:
+    app: grpcserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: grpcserver
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: grpcserver
+        version: v1
+    spec:
+      containers:
+      - name: grpcserver
+        image: index.docker.io/pansq/grpcserver-v1:1.0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 30051
+      imagePullSecrets:
+        - name: registrykey-pansq 

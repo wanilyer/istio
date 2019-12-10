@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: istio-prometheus-ingress
+  namespace: istio-system
+spec:
+  rules:
+  - host: istio-prometheus.kylin
+    http:
+      paths:
+      - path: /
+        backend:
+         serviceName: prometheus
+         servicePort: 9090
